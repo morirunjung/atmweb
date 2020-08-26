@@ -14,7 +14,7 @@ public class CustomerController {
     ArrayList<Customer> customers = new ArrayList<>();
 
     //@RequestMapping("/customer")
-    @GetMapping("/customer")
+    @GetMapping("/customer") //ชื่อ บน URL
     public String getCustomerPage(Model model) {
 
 //        ArrayList<Customer> customers = new ArrayList<>();
@@ -27,7 +27,7 @@ public class CustomerController {
 //        customers.add(new Customer(3,"Rick",3456));
 
         model.addAttribute("allCustomers", customers);
-        return "customer";
+        return "customer"; //customer.html
     }
     @PostMapping("customer")
     public String registerCustomer(@ModelAttribute Customer customer, Model model) {
