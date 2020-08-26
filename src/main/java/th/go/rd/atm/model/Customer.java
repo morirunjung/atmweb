@@ -1,7 +1,7 @@
-package th.go.rd.atm.controller;
+package th.go.rd.atm.model;
 
 public class Customer {
-    private int id;
+    private int id; //ชื่อตัวแปร ตรงกันกับ name ของ input ใน Html
     private String name;
     private int pin;
 

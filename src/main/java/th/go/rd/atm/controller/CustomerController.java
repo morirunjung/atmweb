@@ -6,15 +6,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.ArrayList;
+import th.go.rd.atm.model.Customer;
+import th.go.rd.atm.service.CustomerService;
 
 @Controller
+@RequestMapping("/customer")
 public class CustomerController {
-    ArrayList<Customer> customers = new ArrayList<>();
-
+//    ArrayList<Customer> customers = new ArrayList<>();
+    private CustomerService customerService;
     //@RequestMapping("/customer")
-    @GetMapping("/customer") //ชื่อ บน URL
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
+//    @GetMapping("/customer") //ชื่อ บน URL
+    @GetMapping
     public String getCustomerPage(Model model) {
 
 //        ArrayList<Customer> customers = new ArrayList<>();
@@ -26,13 +33,19 @@ public class CustomerController {
 //        customers.add(new Customer(2,"Nancy",2345));
 //        customers.add(new Customer(3,"Rick",3456));
 
-        model.addAttribute("allCustomers", customers);
+//        model.addAttribute("allCustomers", customers);
+
+        model.addAttribute("allCustomers", customerService.getCustomers());
         return "customer"; //customer.html
     }
-    @PostMapping("customer")
+
+//    @PostMapping("customer")
+    @PostMapping
     public String registerCustomer(@ModelAttribute Customer customer, Model model) {
-        customers.add(customer);
-        model.addAttribute("allCustomers", customers);
+//        customers.add(customer);
+//        model.addAttribute("allCustomers", customers);
+        customerService.createCustomer(customer);
+        model.addAttribute("allCustomers", customerService.getCustomers());
         return "redirect:customer";
     }
 
