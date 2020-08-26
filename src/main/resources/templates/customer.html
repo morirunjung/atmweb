@@ -22,12 +22,14 @@
 <h1>All Customers</h1>
 
 <table border="1px">
-    <tr><th>Id</th> <th>Name</th></tr>
+    <tr><th>Id</th> <th>Name</th><th>Pin</th></tr>
 
     <div th:each="customer : ${allCustomers}">
         <tr>
             <td><span th:text="${customer.id}">Id</span></td>
             <td><span th:text="${customer.name}">Name</span></td>
+            <td><span th:text="${customer.pin}">Pin</span></td>
+
         </tr>
     </div>
 
