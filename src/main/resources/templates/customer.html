@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Customer</title>
-    <link th:rel="stylesheet" th:href="@{css/bootstrap.min.css}">
-</head>
-<body>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/main_layout}"
+      xmlns:th="https://www.thymeleaf.org">
 
-<div class="container">
+<div class="container" layout:fragment="content">
     <h1>Register Customer</h1>
     <form action="#" th:action="@{/customer}" method="POST">
         <div class="form-group">
@@ -27,11 +23,11 @@
 
         <div class="form-group">
 <!--            <input type="submit" class="btn btn-primary">-->
-            <button type="submit" class="btn btn-primary">ตกลง</button>
+            <button type="submit" class="btn btn-primary">Submit Form</button>
         </div>
     </form>
-
     <hr>
+
     <h1>All Customers</h1>
     <table class="table table-bordered">
         <thead class="thead-light">
@@ -42,7 +38,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="customer : ${allCustomers}">
+        <tr th:each="customer: ${allCustomers}">
             <td th:text="${customer.id}"></td>
             <td th:text="${customer.name}"></td>
             <td th:text="${customer.pin}"></td>
@@ -50,6 +46,3 @@
         </tbody>
     </table>
 </div>
-
-</body>
-</html>
